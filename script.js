@@ -86,7 +86,7 @@ function branco(){
     alert("Clicou em branco");
 }
 function corrige(){
-
+console.log(numero);
 }
 function confirma(){
     alert("Clicou em confirma");
