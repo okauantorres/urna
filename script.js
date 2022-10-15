@@ -94,21 +94,22 @@ function clicou(n){ //Função de clicar em n
 }
 
 function atualizarNumero(n1){  //Função feita por mim
-    let htmlNumero = document.querySelector('.numero.pisca');
-    if(htmlNumero !== null){
+    let htmlNumero = document.querySelector('.numero.pisca'); // Pega o pisca
+    if(htmlNumero !== null){ //Se não tiver vazio, ou seja, não for o último
 
    
     numhtml = htmlNumero.previousElementSibling;
     numhtml.innerHTML = '';
     htmlNumero.classList.remove('pisca');
     numhtml.classList.add('pisca');
-    } else{
+
+    } else{ //Se for o último
         let etapa = etapas[etapaAtual];
-        ultima = numeros.lastChild;
-        ultima.innerHTML = '';
-        ultima.classList.add('pisca');
+        ultima = numeros.lastChild; //Seleciona o último elemento da div numeros
+        ultima.innerHTML = ''; //Deixa null
+        ultima.classList.add('pisca'); //Adiciona pisca
     
-        seuVotoPara.style.display = 'none';
+        seuVotoPara.style.display = 'none'; // Retorna tudo, tira o candidato que foi selecionado no atualizar interface.
         cargo.innerHTML = etapa.titulo;
         desc.innerHTML = '';
         aviso.style.display = 'none';
@@ -172,8 +173,15 @@ function confirma(){
         if(etapas[etapaAtual] !== undefined){
             comecarEtapa();
         } else{
-            document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
             console.log(votos);
+            function inicio(){
+                etapaAtual = 0; 
+                numero = ''; 
+                votoBranco = false;
+                votos = [];
+                comecarEtapa();
+            }
+            setTimeout(inicio, 3000);
         }
         
     }
