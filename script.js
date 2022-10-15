@@ -92,6 +92,31 @@ function clicou(n){ //Função de clicar em n
 
     }
 }
+
+function atualizarNumero(n1){  //Função feita por mim
+    let htmlNumero = document.querySelector('.numero.pisca');
+    if(htmlNumero !== null){
+
+   
+    numhtml = htmlNumero.previousElementSibling;
+    numhtml.innerHTML = '';
+    htmlNumero.classList.remove('pisca');
+    numhtml.classList.add('pisca');
+    } else{
+        let etapa = etapas[etapaAtual];
+        ultima = numeros.lastChild;
+        ultima.innerHTML = '';
+        ultima.classList.add('pisca');
+    
+        seuVotoPara.style.display = 'none';
+        cargo.innerHTML = etapa.titulo;
+        desc.innerHTML = '';
+        aviso.style.display = 'none';
+        lateral.innerHTML = '';
+        numeros.innerHTML = numeroHtml;
+    }
+}
+
 function branco(){
     if(numero === ''){
         votoBranco = true;
@@ -115,7 +140,7 @@ function corrige(){
         newNumero = newNumero.replace(/,/g, '')
         numero = newNumero; //Retorno do número com a última unidade já deletada, em forma de string.
     }
-    //clicou('');  //AGORA EU TERIA QUE ATUALIZAR O numeroHtml, para que assim seja atualizada a interface
+    atualizarNumero(numero);  
 
     console.log(numero);  
     console.log(newNumero); 
