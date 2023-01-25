@@ -19,6 +19,7 @@ let votos = [];
 function comecarEtapa(){ // Começa a rodar o código para que seja iniciado a votação
     let etapa = etapas[etapaAtual]; //etapa será etapas[0], ou seja, a etapa vereador no etapas.js
 
+
     let numeroHtml = '';
     numero = '';
     votoBranco = false;
@@ -168,23 +169,38 @@ function confirma(){
         console.log('Confirmando como'+ numero);
     }
 
+    
+
     if(votoConfirmado){
         etapaAtual++;
         if(etapas[etapaAtual] !== undefined){
             comecarEtapa();
         } else{
             console.log(votos);
-            function inicio(){
-                etapaAtual = 0; 
-                numero = ''; 
-                votoBranco = false;
-                votos = [];
-                comecarEtapa();
-            }
-            setTimeout(inicio, 3000);
+            document.querySelector('.fim').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
+            document.querySelector('.fim').style.display = 'flex';
+          
+            etapaAtual = 0;
+            votos = [];
+            votoBranco = false;
+            numero = '';
+            seuVotoPara.style.display = 'none';
+            cargo.style.display = 'none';
+            desc.style.display = 'none';
+            aviso.style.display = 'none';
+            lateral.style.display = 'none';
+            numeros.style.display = 'none';
+            
+            
         }
         
     }
+
+}
+
+function recomecar(){
+    location.reload();
 }
 
 comecarEtapa();
+
